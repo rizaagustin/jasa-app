@@ -11,6 +11,8 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
+use  Illuminate\Database\Eloquent\SoftDeletes;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -19,13 +21,21 @@ class User extends Authenticatable
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
-
+    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
-    protected $fillable = [
+
+    protected $dates = [
+        'updated_at', 
+        'created_at', 
+        'deleted_at',
+        'email_verified_at'
+    ];
+
+     protected $fillable = [
         'name', 'email', 'password',
     ];
 
