@@ -14,7 +14,7 @@ class AddForeignService extends Migration
     public function up()
     {
         Schema::table('service', function (Blueprint $table) {
-            $table->foreign('users_id','fk_service_to_users')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('users_id','fk_service_to_users2')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignService extends Migration
     public function down()
     {
         Schema::table('service', function (Blueprint $table) {
-            $table->dropForeign('fk_service_to_users');
+            $table->dropForeign('fk_service_to_users2');
         });
     }
 }

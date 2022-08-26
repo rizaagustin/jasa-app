@@ -22,4 +22,11 @@ class OrderStatus extends Model
         'created_at', 
         'deleted_at'
     ];    
+
+    public function order(){
+        return $this->hasMany('Apps\Models\Order','order_status_id');
+    }
+
+
+
 }
