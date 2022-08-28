@@ -11,7 +11,7 @@ class DetailUser extends Model
     // use HasFactory;
     use SoftDeletes;
 
-    public $table = 'detail_users';
+    public $table = 'detail_user';
     protected $dates = [
         'updated_at', 
         'created_at', 

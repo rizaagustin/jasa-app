@@ -79,10 +79,12 @@ class User extends Authenticatable
         return $this->hasMany('Apps\Models\Service','user_id');
     }
 
+    //one to many
     public function order_buyer(){
         return $this->hasMany('Apps\Models\Order','buyyer_id');
     }
 
+    //one to many
     public function order_freelancer(){
         return $this->hasMany('Apps\Models\Order','freelancer_id');
     }

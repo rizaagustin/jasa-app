@@ -30,4 +30,5 @@ class ExperienceUser extends Model
     public function detail_user(){
         return $this->belongsTo('Apps\Models\DetailUser','detail_user_id','id');
     }
+    
 }
