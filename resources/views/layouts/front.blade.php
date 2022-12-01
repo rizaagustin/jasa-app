@@ -13,10 +13,8 @@
         <div class="relative">
             {{-- @yield('oke') --}}
             @include('includes.landing.header')
-                {{-- @include('sweetalert::alert') --}}
-            
-                @yield('content')
-            
+                {{-- @include('sweetalert::alert') --}}            
+                @yield('content')            
             @include('includes.landing.footer')
 
             @stack('before-script')

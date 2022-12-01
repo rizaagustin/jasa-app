@@ -14,8 +14,10 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        // echo "hello";
+        return view('pages.dashboard.request.index');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -46,7 +48,7 @@ class RequestController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pages.dashboard.request.detail');
     }
 
     /**

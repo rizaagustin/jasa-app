@@ -42,7 +42,7 @@ class CreateNewUser implements CreatesNewUsers
                 
                 //add to detail user -> karena ketika membuat use kita juga harus membuat detail user
                 $detail_user = new DetailUser;
-                $detail_user->user_id = $user->id;
+                $detail_user->users_id = $user->id;
                 $detail_user->photo = Null;                
                 $detail_user->role = Null;
                 $detail_user->contact_number = Null;

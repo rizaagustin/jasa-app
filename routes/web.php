@@ -30,8 +30,9 @@ Route::get('detail/{id}',[LandingController::class,'detail'])->name('detail.land
 Route::get('explore',[LandingController::class,'explore'])->name('explore.landing');
 
 Route::resource('/',LandingController::class);
+Route::resource('dashboard', MemberController::class);
 
-Route::group(['prefix' => 'member','as'=>'member','middleware' => ['auth:sanctum','verified']],function(){
+Route::group(['prefix' => 'member','as'=>'member.','middleware' => ['auth:sanctum','verified']],function(){
     // dashboard
     Route::resource('dashboard', MemberController::class);
 
@@ -45,7 +46,7 @@ Route::group(['prefix' => 'member','as'=>'member','middleware' => ['auth:sanctum
     // My Ordero9i
     Route::get('accept/order/{id}',[MyOrderController::class,'accepted'])->name('accept.request');    
     Route::get('reject/order/{id}',[MyOrderController::class,'rejected'])->name('reject.request');    
-    Route::resource('request', MyOrderController::class);
+    Route::resource('order', MyOrderController::class);
 
     //profile
     Route::get('delete_photo',[ProfileController::class,'delete'])->name('delete.photo.profile');    

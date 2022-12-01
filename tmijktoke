@@ -1,0 +1,47 @@
+[33mcommit 8ded9a998b8d7fb13d3e02bcf68cbadf55a2333c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Riza Agustin <rizaagustin20@gmail.com>
+Date:   Wed Nov 2 15:59:24 2022 +0700
+
+    landing page home
+
+[33mcommit 378bcba8ea9a9f7cc271afdf9b9dc7d1899846eb[m
+Author: Riza Agustin <rizaagustin20@gmail.com>
+Date:   Mon Aug 29 00:22:31 2022 +0700
+
+    Create Seeder
+
+[33mcommit fd797f646c4b7c3965361421aa981bfd06c47426[m
+Author: Riza Agustin <rizaagustin20@gmail.com>
+Date:   Fri Aug 26 08:30:02 2022 +0700
+
+    Implement ORM ELOQUENT
+
+[33mcommit d286cb024d16812a8cdd8c5114dc8e7b466e6ea5[m
+Author: Riza Agustin <rizaagustin20@gmail.com>
+Date:   Thu Aug 25 22:31:31 2022 +0700
+
+    Created Model
+
+[33mcommit 886541e45639467f34178c5b8ba76fbfb624a601[m
+Author: Riza Agustin <rizaagustin20@gmail.com>
+Date:   Thu Aug 25 19:34:23 2022 +0700
+
+    Add Foreign Keys
+
+[33mcommit 8dec38a4c5b4f291d9a0ab6d27f5e33fbf2fb958[m
+Author: Riza Agustin <rizaagustin20@gmail.com>
+Date:   Thu Aug 25 00:57:28 2022 +0700
+
+    Add foreign keys detail_user and experience_user
+
+[33mcommit b62b2e77ecb8b8ec0cc11601f551eb0aa96780ff[m
+Author: Riza Agustin <rizaagustin20@gmail.com>
+Date:   Wed Aug 24 23:05:35 2022 +0700
+
+    Create Migration
+
+[33mcommit d583b1dd49ba888af7dc2c2316cb5548e0b4e3d6[m
+Author: Riza Agustin <rizaagustin20@gmail.com>
+Date:   Wed Aug 24 17:20:30 2022 +0700
+
+    Setting .env and connection DBMS
