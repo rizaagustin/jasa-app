@@ -28,7 +28,6 @@
                 <div class="details-heading">
                     <h1 class="text-2xl font-semibold">I Will Design WordPress eCommerce Modules</h1>
                     <div class="my-3">
-                        {{-- <?php include 'components/rating.php'; ?> --}}
                         @include('components.landing.rating')
                     </div>
                 </div>
