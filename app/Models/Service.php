@@ -18,7 +18,7 @@ class Service extends Model
     ];
 
      protected $fillable = [
-        'user_id', 
+        'users_id', 
         'title', 
         'description', 
         'delivery_time', 
@@ -31,28 +31,28 @@ class Service extends Model
     ];    
 
     public function user(){
-        return $this->belongsTo('Apps\Models\User','user_id','id');
+        return $this->belongsTo('App\Models\User','users_id','id');
     }
 
     //one to many
     public function advantage_user(){
-        return $this->hasMany('Apps\Models\AdvantageUser','service_id');
+        return $this->hasMany('App\Models\AdvantageUser','service_id');
     }
 
     public function tagline(){
-        return $this->hasMany('Apps\Models\Tagline','service_id');
+        return $this->hasMany('App\Models\Tagline','service_id');
     }
 
     public function advantage_service(){
-        return $this->hasMany('Apps\Models\AdvantageService','service_id');
+        return $this->hasMany('App\Models\AdvantageService','service_id');
     }
 
     public function thumbnail_service(){
-        return $this->hasMany('Apps\Models\ThumbnailService','service_id');
+        return $this->hasMany('App\Models\ThumbnailService','service_id');
     }
 
     public function order(){
-        return $this->hasMany('Apps\Models\Order','service_id');
+        return $this->hasMany('App\Models\Order','service_id');
     }
 
 }

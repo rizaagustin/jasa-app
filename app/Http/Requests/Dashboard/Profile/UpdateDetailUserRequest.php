@@ -35,7 +35,7 @@ class UpdateDetailUserRequest extends FormRequest
                 'nullable', 'string', 'max:100',
             ],
             'contact_number' => [
-                'requeired', 'regex:/^([0-9\s\-\+\(\)]*)/', 'max:12',
+                'required', 'regex:/^([0-9\s\-\+\(\)]*)/', 'max:12',
             ],
             'biography' => [
                 'nullable', 'string', 'max:5000',

@@ -4,7 +4,7 @@
 
 @section('content')
 
-    {{-- @if () --}}
+    @if (count($orders))
         <main class="h-full overflow-y-auto">
 
             <div class="container mx-auto">
@@ -161,7 +161,7 @@
                 </div>
             </section>
         </main>    
-    {{-- @else
+    @else
         <div class="flex h-screen">
             <div class="m-auto text-center">
                 <img src="{{ asset('assets/images/empty-illustration.svg') }}" alt="" class="w-48 mx-auto">
@@ -180,6 +180,6 @@
                 </div>
             </div>
         </div>        
-    @endif --}}
+    @endif
 
 @endsection
