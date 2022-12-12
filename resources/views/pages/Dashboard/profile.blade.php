@@ -22,7 +22,7 @@
             <div class="grid gap-5 md:grid-cols-12">
                 <main class="col-span-12 p-4 md:pt-0">
                     <div class="px-2 py-2 mt-2 bg-white rounded-xl">
-                        <form action="{{ route('member.profile.update', [Auth::user()->id] ) }}" method="POST" enctype="mulitipart/form-data">
+                        <form action="{{ route('member.profile.update', [Auth::user()->id] ) }}" method="POST" enctype="multipart/form-data">
                             
                             @method('PUT')
                             @csrf
@@ -33,7 +33,7 @@
                                             <div class="flex items-center mt-1">
                                                 
                                                 @if(auth()->user()->detail_user()->first()->photo != NULL)
-                                                    <img src="{{ url(Storage::url(auth()->user()->detail_user()->first()->photo)) }}" alt="photo profile" class="rouded-full">
+                                                    <img src="{{ url(Storage::url(auth()->user()->detail_user()->first()->photo)) }}" alt="photo profile" class="w-16 h-16 rounded-full">
                                                 @else
                                                     <span class="inline-block w-16 h-16 overflow-hidden bg-gray-100 rounded-full">
                                                         <svg class="w-full h-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">

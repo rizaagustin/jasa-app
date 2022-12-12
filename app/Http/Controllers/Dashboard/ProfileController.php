@@ -97,12 +97,10 @@ class ProfileController extends Controller
     // 
      public function update(UpdateProfileRequest $request_profile, UpdateDetailUserRequest $request_detail_user)
     {
-        // dd($request);
-        // die;
+
         $data_profile = $request_profile->all();
         $data_detail_user = $request_detail_user->all();
-        // dd($request_profile);
-        //get photo user
+         //get photo user
         // dd($data_detail_user);
         $get_photo = DetailUser::where('users_id', Auth::user()->id)->first();
 

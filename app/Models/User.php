@@ -81,7 +81,7 @@ class User extends Authenticatable
 
     //one to many
     public function order_buyer(){
-        return $this->hasMany('App\Models\Order','buyyer_id');
+        return $this->hasMany('App\Models\Order','buyer_id');
     }
 
     //one to many

@@ -43,7 +43,7 @@ class MyOrderController extends Controller
 
     public function index()
     {
-        $order = Order::Where('freelancer_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $orders = Order::Where('freelancer_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         return view('pages.dashboard.order.index', compact('orders'));
     }
 

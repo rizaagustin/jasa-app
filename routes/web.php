@@ -43,9 +43,9 @@ Route::group(['prefix' => 'member','as'=>'member.','middleware' => ['auth:sanctu
     Route::get('approve_request/{id}',[RequestController::class,'approve'])->name('approve.request');    
     Route::resource('request', RequestController::class);
 
-    // My Ordero9i
-    Route::get('accept/order/{id}',[MyOrderController::class,'accepted'])->name('accept.request');    
-    Route::get('reject/order/{id}',[MyOrderController::class,'rejected'])->name('reject.request');    
+    // My Ordero9i    
+    Route::get('accept/order/{id}', [MyOrderController::class, 'accepted'])->name('accept.order');
+    Route::get('reject/order/{id}', [MyOrderController::class, 'rejected'])->name('reject.order');
     Route::resource('order', MyOrderController::class);
 
     //profile

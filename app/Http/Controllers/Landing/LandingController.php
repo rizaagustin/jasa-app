@@ -123,22 +123,21 @@ class LandingController extends Controller
     public function booking($id){
         $service = Service::where('id',$id)->first();
         $user_buyer = Auth::user()->id;
-
         // validate booking
         // user tidak bisa booking servicenya sendiri
-        if ($service->user_id == $user_buyer) {
+        if ($service->users_id == $user_buyer) {
+            // toast()->warning('Sorry, members cannot book their own service!');
             toast()->warning('Sorry, members cannot book their own service!');
             return back();
         }
-
         $order = new Order;
         $order->buyer_id = $user_buyer;
         $order->freelancer_id = $service->user->id;
         $order->service_id = $service->id;
         $order->file = NULL;
         $order->note = NULL;
-        $order->expired = Date('y-m-d', strtotime('+3 Days'));
-        $order->status_id = 4;
+        $order->expired = Date('y-m-d', strtotime('+3 days'));
+        $order->order_status_id = 4;
         $order->save();
 
         $order_detail = Order::where('id', $order->id)->first();
@@ -151,7 +150,7 @@ class LandingController extends Controller
     public function detail_booking($id){
         $order = Order::where('id', $id)->first();
 
-        return view('pages.landing.booking', compact($order));
+        return view('pages.landing.booking', compact('order'));
     }
     
 }
