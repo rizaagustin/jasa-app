@@ -44,7 +44,7 @@ class ServiceController extends Controller
      public function index()
     {
 
-        $services = Service::where('users_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $services = Service::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         return view('pages.dashboard.service.index', compact('services'));
     }
 
@@ -66,68 +66,80 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
+        DB::beginTransaction();
 
-        $data = $request->all();
+        try{
+            $data = $request->all();
 
-        $data['users_id'] = Auth::user()->id;
-        // dd($data);
-        // add to service
-        $service = Service::create($data);
+            $data['user_id'] = Auth::user()->id;
+            // dd($request);
+            // add to service
+            $service = Service::create($data);
 
-        // add to advantage service
-        foreach($data['advantage-service'] as $key => $value){
-            
-            $advantage_service = new AdvantageService;
-            $advantage_service->service_id = $service->id;
-            $advantage_service->advantage = $value;
-            $advantage_service->save();
-
-        }
-
-        // add to advantage user
-        foreach($data['advantage-user'] as $key => $value){
-            
-            $advantage_user = new AdvantageUser;
-            $advantage_user->service_id = $service->id;
-            $advantage_user->advantage = $value;
-            $advantage_user->save();
-
-        }
-
-        // add to thumbnail service
-        // has file helper dari laravel untu mengecek request ada filenya atau tidak
-        if ($request->hasFile('thumbnail')) 
-        {
-            // berapa banyak foto yg d masukan di looping
-            foreach($request->file('thumbnail') as $file)
-            {
-                // masukan file kedalam store dan path di tuju
-                $path = $file->store(
-                    'asset/service/thumbnail', 'public'
-                );
-
-                $advantage_service = new ThumbnailService();
-                // bisa $service->id atau $service['id']
-                $advantage_service->service_id = $service['id'];
-                $advantage_service->thumbnail = $path;
+            // add to advantage service
+            foreach($data['advantages-service'] as $key => $value){
+                
+                $advantage_service = new AdvantageService;
+                $advantage_service->service_id = $service->id;
+                $advantage_service->advantage = $value;
                 $advantage_service->save();
+
             }
+
+            // add to advantage user
+            foreach($data['advantage-user'] as $key => $value){
+                
+                $advantage_user = new AdvantageUser;
+                $advantage_user->service_id = $service->id;
+                $advantage_user->advantage = $value;
+                $advantage_user->save();
+
+            }
+
+            // add to thumbnail service
+            // has file helper dari laravel untu mengecek request ada filenya atau tidak
+            if ($request->hasFile('thumbnail')) 
+            {
+                // berapa banyak foto yg d masukan di looping
+                foreach($request->file('thumbnail') as $file)
+                {
+                    // masukan file kedalam store dan path di tuju
+                    $path = $file->store(
+                        'asset/service/thumbnail', 'public'
+                    );
+
+                    $advantage_service = new ThumbnailService();
+                    // bisa $service->id atau $service['id']
+                    $advantage_service->service_id = $service['id'];
+                    $advantage_service->thumbnail = $path;
+                    $advantage_service->save();
+                }
+            }
+
+
+            // add to tagline
+            foreach($data['tagline'] as $key => $value){
+        
+                $tagline = new Tagline;
+                $tagline->service_id = $service->id;
+                $tagline->tagline = $value;
+                $tagline->save();
+
+            }
+            DB::commit();
+
+            toast()->success('Save has been success');
+
+            return redirect()->route('member.service.index');
+
+        }catch(\Exception $e){
+
+            DB::rollback();
+
+            toast()->success('Save has been failed');
+            return redirect()->route('member.service.index');
+
         }
-
-
-        // add to tagline
-        foreach($data['tagline'] as $key => $value){
-    
-            $tagline = new Tagline;
-            $tagline->service_id = $service->id;
-            $tagline->tagline = $value;
-            $tagline->save();
-
-        }
-
-        toast()->success('Save has been success');
-
-        return redirect()->route('member.service.index');
     }
 
     /**

@@ -14,7 +14,7 @@ class AddForeignKeysDetailUser extends Migration
     public function up()
     {
         Schema::table('detail_user', function (Blueprint $table) {
-            $table->foreign('users_id','fk_detail_user_to_users')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('user_id','fk_detail_user_to_users')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

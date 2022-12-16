@@ -102,7 +102,7 @@ class ProfileController extends Controller
         $data_detail_user = $request_detail_user->all();
          //get photo user
         // dd($data_detail_user);
-        $get_photo = DetailUser::where('users_id', Auth::user()->id)->first();
+        $get_photo = DetailUser::where('user_id', Auth::user()->id)->first();
 
         // delete add file from storage
         if(isset($data_detail_user['photo'])){
@@ -175,7 +175,7 @@ class ProfileController extends Controller
     public function delete(){
 
         //get user
-        $get_user_photo = DetailUser::where('users_id', Auth::user()->id)->first();
+        $get_user_photo = DetailUser::where('user_id', Auth::user()->id)->first();
         $path_photo = $get_user_photo['photo'];
 
         //second update value to null

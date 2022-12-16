@@ -18,7 +18,7 @@ class Service extends Model
     ];
 
      protected $fillable = [
-        'users_id', 
+        'user_id', 
         'title', 
         'description', 
         'delivery_time', 
@@ -31,7 +31,7 @@ class Service extends Model
     ];    
 
     public function user(){
-        return $this->belongsTo('App\Models\User','users_id','id');
+        return $this->belongsTo('App\Models\User','user_id','id');
     }
 
     //one to many
@@ -52,7 +52,7 @@ class Service extends Model
     }
 
     public function order(){
-        return $this->hasMany('App\Models\Order','service_id');
+        return $this->hasMany('App\Models\Order', 'service_id');
     }
 
 }

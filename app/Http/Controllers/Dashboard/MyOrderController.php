@@ -77,12 +77,13 @@ class MyOrderController extends Controller
     public function show(Order $order)
     {
         $service = Service::where('id', $order['service_id'])->first();
+
         $thumbnail = ThumbnailService::where('service_id', $order['service_id'])->get();
         $advantage_service = AdvantageService::where('service_id', $order['service_id'])->get();
-        $advantage_user = ThumbnailService::where('service_id', $order['service_id'])->get();
+        $advantage_user = AdvantageUser::where('service_id', $order['service_id'])->get();
         $tagline = Tagline::where('service_id', $order['service_id'])->get();
 
-        return view('pages.dashboard.order.detail', compact('service','thubmnail','advantage_service', 'advantage_user','tagline'));
+        return view('pages.dashboard.order.detail', compact('order', 'thumbnail', 'advantage_service', 'advantage_user', 'tagline', 'service'));
     }
 
     /**
@@ -152,7 +153,7 @@ class MyOrderController extends Controller
         $order->order_status_id = 3;
         $order->save();
 
-        toast()->success('Accept order  has been success');
+        toast()->success('Reject order has been success');
 
         return back();
     }

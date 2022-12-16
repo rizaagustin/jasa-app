@@ -11,8 +11,8 @@
             @endif
 
             <!--Author's profile photo-->
-            <img class="w-14 h-14 object-cover object-center rounded-full mr-1"
-                src="https://randomuser.me/api/portraits/men/1.jpg" alt="random user" />
+            {{-- <img class="w-14 h-14 object-cover object-center rounded-full mr-1"
+                src="https://randomuser.me/api/portraits/men/1.jpg" alt="random user" /> --}}
             <div>
                 <!--Author name-->
                 <p class="text-gray-900 font-semibold text-lg">{{ $item->user->name ?? '' }}</p>

@@ -123,9 +123,10 @@ class LandingController extends Controller
     public function booking($id){
         $service = Service::where('id',$id)->first();
         $user_buyer = Auth::user()->id;
+        // dd($user_buyer.''.$service->user_id);
         // validate booking
         // user tidak bisa booking servicenya sendiri
-        if ($service->users_id == $user_buyer) {
+        if ($service->user_id == $user_buyer) {
             // toast()->warning('Sorry, members cannot book their own service!');
             toast()->warning('Sorry, members cannot book their own service!');
             return back();
